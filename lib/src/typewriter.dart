@@ -208,7 +208,7 @@ class _TypewriterState extends State<TypewriterAnimatedTextKit>
     );
   }
 
-  void _nextAnimation() {
+  Future<void> _nextAnimation() async {
     final isLast = _index == widget.text.length - 1;
 
     _isCurrentlyPausing = false;
@@ -228,6 +228,7 @@ class _TypewriterState extends State<TypewriterAnimatedTextKit>
         }
       } else {
         widget.onFinished?.call();
+        await Future.delayed(const Duration(seconds: 5));
         return;
       }
     } else {
