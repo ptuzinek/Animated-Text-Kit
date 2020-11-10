@@ -227,8 +227,13 @@ class _TypewriterState extends State<TypewriterAnimatedTextKit>
           _currentRepeatCount++;
         }
       } else {
-        widget.onFinished?.call();
+
+        widget.onFinished?.call();_controller.stop();
+
         await Future.delayed(const Duration(seconds: 5));
+
+        _controller.repeat();
+
         return;
       }
     } else {
