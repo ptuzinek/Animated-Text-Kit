@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 import 'package:characters/characters.dart';
 import 'package:flutter/material.dart';
@@ -227,10 +228,10 @@ class _TypewriterState extends State<TypewriterAnimatedTextKit>
           _currentRepeatCount++;
         }
       } else {
+        widget.onFinished?.call();
+        _controller.stop();
 
-        widget.onFinished?.call();_controller.stop();
-
-        await Future.delayed(const Duration(seconds: 5));
+        sleep(Duration(seconds:5));
 
         _controller.repeat();
 
