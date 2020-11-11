@@ -228,12 +228,8 @@ class _TypewriterState extends State<TypewriterAnimatedTextKit>
           _currentRepeatCount++;
         }
       } else {
-        widget.onFinished?.call();
         _controller.stop();
-
-        sleep(Duration(seconds:5));
-
-        _controller.repeat();
+        widget.onFinished?.call();
 
         return;
       }
